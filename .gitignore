@@ -39,3 +39,5 @@ proguard/
 
 # Import summary file
 import-summary.txt
+.DS_Store
+build/.DS_Store
