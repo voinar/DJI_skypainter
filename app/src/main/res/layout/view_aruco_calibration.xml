@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <SurfaceView
+            android:id="@+id/livestream_preview_sf"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:id="@+id/preview_imageview"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/livestream_preview_sf"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:visibility="visible" />
+
+        <TextureView
+            android:id="@+id/livestream_preview_ttv"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/preview_imageview"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:alpha="50"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/text_calibration_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/livestream_preview_ttv"
+            android:layout_alignLeft="@+id/livestream_preview_sf"
+            android:layout_marginTop="10dp"
+            android:text="@string/aruco_feedback" />
+
+        <Button
+            android:id="@+id/btn_aruco_capture"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/btn_aruco_calibrate"
+            android:text="@string/btn_aruco_capture_name"
+            style="@style/common_button"/>
+
+        <Button
+            android:id="@+id/btn_aruco_calibrate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/btn_aruco_calibrate_name"
+            style="@style/common_button"/>
+    </RelativeLayout>
+</merge>

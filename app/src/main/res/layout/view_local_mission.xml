@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/video_feed_frame"
+            android:layout_width="360dp"
+            android:layout_height="202dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <com.dji.sdk.sample.internal.utils.VideoFeedView
+                android:id="@+id/primary_video_feed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:visibility="invisible"/>
+
+            <View
+                android:id="@+id/primary_cover_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:visibility="invisible"/>
+        </FrameLayout>
+
+
+
+        <TextureView
+            android:id="@+id/aruco_dummy_textureview"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_alignTop="@id/video_feed_frame"
+            android:alpha="50"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/aruco_preview_imageview"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_alignTop="@id/video_feed_frame"
+            android:visibility="visible" />
+
+        <ScrollView
+            android:id="@+id/lm_list_scroll"
+            android:layout_width="140dp"
+            android:layout_height="290dp"
+            android:layout_below="@+id/video_feed_frame"
+            android:layout_alignRight="@+id/video_feed_frame"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/lm_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textSize="8sp"
+                android:scrollbars="vertical"
+                android:textColor="@color/black" />
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/text_mission_state"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/text_position_gps"
+            android:layout_alignLeft="@+id/text_position_gps"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_mission_state" />
+
+        <TextView
+            android:id="@+id/text_mission_error"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/text_mission_state"
+            android:layout_alignLeft="@+id/text_mission_state"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_mission_error" />
+
+        <TextView
+            android:id="@+id/text_pose_real"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/video_feed_frame"
+            android:layout_alignLeft="@+id/video_feed_frame"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_pose_real" />
+
+        <TextView
+            android:id="@+id/text_velocity"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/text_pose_real"
+            android:layout_alignLeft="@+id/video_feed_frame"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_velocity" />
+
+        <TextView
+            android:id="@+id/text_position_estimated"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/text_velocity"
+            android:layout_alignLeft="@+id/video_feed_frame"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_position" />
+
+        <TextView
+            android:id="@+id/text_vstick"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/text_position_estimated"
+            android:layout_alignLeft="@+id/video_feed_frame"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_vstick" />
+
+        <TextView
+            android:id="@+id/text_position_gps"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/text_vstick"
+            android:layout_alignLeft="@+id/video_feed_frame"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/lm_list_scroll"
+            android:text="@string/listener_gps" />
+
+        <Button
+            android:id="@+id/btn_enable_virtual_stick"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/btn_disable_virtual_stick"
+            android:text="Enable Virtual Stick"
+            style="@style/common_button"/>
+
+        <Button
+            android:id="@+id/btn_disable_virtual_stick"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="Disable Virtual Stick"
+            style="@style/common_button"/>
+
+        <Button
+            android:id="@+id/btn_take_off"
+            style="@style/common_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/btn_disable_virtual_stick"
+            android:text="Take Off" />
+
+
+        <Button
+            android:id="@+id/btn_mission_start"
+            style="@style/common_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_disable_virtual_stick"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Mission Start" />
+
+        <Button
+            android:id="@+id/btn_mission_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mission Load"
+            style="@style/common_button"
+            android:layout_above="@+id/btn_disable_virtual_stick"
+            android:layout_alignLeft="@+id/btn_enable_virtual_stick"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_mission_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mission Stop"
+            style="@style/common_button"
+            android:layout_above="@+id/btn_disable_virtual_stick"
+            android:layout_alignRight="@+id/btn_take_off"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_calibrate"
+            style="@style/common_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_mission_load"
+            android:layout_alignLeft="@+id/btn_mission_load"
+            android:layout_marginTop="10dp"
+            android:text="Calibrate" />
+    </RelativeLayout>
+
+</merge>
