@@ -1,0 +1,75 @@
+dji mobile sdk v4
+https://developer.dji.com/document/122b5969-d64d-4752-8452-400c41240aa5
+
+basic application with product registration:
+https://developer.dji.com/document/76942407-070b-4542-8042-204cfb169168
+
+
+symulator description:
+https://www.dji.com/pl/downloads/softwares/dji-assistant-2-consumer-drones-series
+
+simulator app:
+https://developer.dji.com/document/224541ad-ac5a-49a9-b559-095cd6fd66cf
+
+
+
+
+05.08.2023
+
+...
+
+26.08.2023
+
+recap:
+
+* co sie dzialo ogolnie
+najpierw probowalismy uruchomic "zielona" apke:
+https://github.com/cea-ethz/dji-controller-android
+Nie udalo sie bo to prawdopodobnie wersja dostosowana do DJI Phantom. Okazalo sie, ze to rozszerzona/przerobiona wersja apki podstawowej (tzw "niebieska"):
+https://github.com/dji-sdk/Mobile-SDK-Android
+
+
+* jak uruchomic niebieska apke?
+1. DJI Mini 2 uses Mobile SDK v. 4.16.4 APP found here https://github.com/dji-sdk/Mobile-SDK-Android
+2. To compile/run it, use local Android Studio found in android-studio dir
+	./android-studio/bin/studio.sh
+
+* how to fix Mobile-SDK-Android? (android studio 2022.3.1)
+1. click on "Upgrade Gradle wrapper to 7.2 version and re-import the project"
+
+* procedura uruchamiania apki Mobile-SDK-Android:
+1. wlaczenie kontroler
+2. app na komorce
+3. wlaczenie drona
+4. register app na komorce
+
+* testy:
+1. component list -> flight controller -> virtual stick dziala
+take off startuje drona
+enable virtual stick uruchamia joystick na telefonie
+lądowanie TYLKO RECZNE !!
+
+* uruchomienie LocalMissionView (wyciagniete z niedzialajacej apki zielonej) w apce niebieskiej (dzialajacej). duzo hakow ale cos sie kompiluje.
+
+1. hack MainContent.java wykomentowane:
+mBtnOpen.setEnabled(false); (linia 376)
+zeby mozna bylo przejsc przez glowne menu bez dostepu do drona (lokalny debugging)
+
+
+2. menu Local Mission oraz Aruco nie dzialaja; debugujemy lokalnie.
+wykomentowano fragmenty dotyczace camera, gimbal, parameters, dictionary (zwiazane z ARUCO). po tej operacji, lokalnie Local Mission przechodzi.
+
+3. do testow na telefonie odkomentowano mBtnOpen.setEnabled(false), camera i gimbal - testujemy czy problemy sa z ARUCO. Chyba tak, teraz przez chwile widac okienko a potem sie wykrzacza z komenda:
+"setMode to shoot_PHOTO"
+
+* takeaways
+przydatne funkcje do debuggingu:
+ToastUtils.setResultToToast - sluzy do wyswietlania komunikatow!
+
+* inne
+wyglada na to, ze getCamera i kontrolery sa brane z zewnetrznych bilbiotek (tj z SDK).
+
+* co dalej?
+- trzeba jeszcze troche popracowac nad uruchomieniem modulu Local Mission z "zielonej" apki.
+- modul ARUCO odpowiada za kody QR. wyglada na to, ze modul aruco oparty o opencv nie dziala. trzeba go usunac gdyz powoduje niepotrzebne komplikacje.
+- 
